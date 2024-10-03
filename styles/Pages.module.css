@@ -1,14 +1,12 @@
 .container {
-  width: 600px;
-  height: 485px;
+  width: 1000px;
   background: linear-gradient(153deg, rgb(116, 56, 216), rgb(18, 150, 170) 74%);
   padding: 5px;
   color: white;
 }
 
 .main {
-  width: 580px;
-  height: 475px;
+  /* width: 580px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
