@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import styles from '../../styles/Pages.module.css';
 import {
   Table,
@@ -31,7 +31,15 @@ const statusColorMap = {
   vacation: "warning",
 };
 
-const INITIAL_VISIBLE_COLUMNS = ["name", "role", "status", "actions"];
+const INITIAL_VISIBLE_COLUMNS = ["symbol", "price", "quantity", "time"];
+
+const SOCKET_TOPIC = {
+  NOTIFY: "notify",
+  AUTH: "auth",
+  CONNECT: "connect",
+  DISCONNECT: "disconnect",
+  RECONNECT: "reconnect",
+}
 
 export default function Index({ navigateToPage }) {
   const [filterValue, setFilterValue] = useState("");
@@ -44,6 +52,46 @@ export default function Index({ navigateToPage }) {
     column: "age",
     direction: "ascending",
   });
+  const [coins, setCoins] = useState([])
+
+  useEffect(() => {
+    console.log("BINANCE_WEBSOCKET", process?.env?.BINANCE_SOCKET)
+    const socket = new WebSocket('wss://stream.binance.com/stream');
+    socket.onopen = (e) => {
+      console.log('Binance socket connected')
+      socket.send(JSON.stringify({
+        method: "SUBSCRIBE",
+        params: ["!miniTicker@arr@3000ms"],
+        id: 1
+      }))
+    }
+
+    socket.onmessage = (event) => {
+      const res = JSON.parse(event.data);
+      if (res && res?.data) {
+        const coins = res.data.filter(coin => {
+          return coin?.s.startsWith('BTC') && coin
+        }).map(coin => {
+          return {
+            symbol: coin?.s,
+            price: coin?.p,
+            quantity: coin?.q,
+            time: coin?.T,
+          }
+        })
+        setCoins(coins)
+      }
+    };
+
+    socket.onerror = (error) => {
+      console.error('WebSocket Error:', error);
+    };
+
+    return () => {
+      socket.close();
+    };
+  }, []);
+
 
   const hasSearchFilter = Boolean(filterValue);
 
