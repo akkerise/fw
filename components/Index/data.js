@@ -10,15 +10,47 @@ const columns = [
 ];
 
 const coin = {
-  "e": "trade",       // Event type
-  "E": 1672515782136, // Event time
-  "s": "BNBBTC",      // Symbol
-  "t": 12345,         // Trade ID
-  "p": "0.001",       // Price
-  "q": "100",         // Quantity
-  "T": 1672515782136, // Trade time
-  "m": true,          // Is the buyer the market maker?
-  "M": true,           // Ignore
+  "e": "trade",                  // Event type
+  "E": 1672515782136,            // Event time
+  "s": "BNBBTC",                 // Symbol
+  "t": 12345,                    // Trade ID
+  "p": "0.001",                  // Price
+  "q": "100",                    // Quantity
+  "T": 1672515782136,            // Trade time
+  "m": true,                     // Is the buyer the market maker?
+  "M": true,                     // Ignore
+  "c": "mUvoqJxFIILMdfAW5iGSOW", // Client order ID
+  "S": "BUY",                    // Side
+  "o": "LIMIT",                  // Order type
+  "f": "GTC",                    // Time in force
+  "q": "1.00000000",             // Order quantity
+  "p": "0.10264410",             // Order price
+  "P": "0.00000000",             // Stop price
+  "F": "0.00000000",             // Iceberg quantity
+  "g": -1,                       // OrderListId
+  "C": "",                       // Original client order ID; This is the ID of the order being canceled
+  "x": "NEW",                    // Current execution type
+  "X": "NEW",                    // Current order status
+  "r": "NONE",                   // Order reject reason; will be an error code.
+  "i": 4293153,                  // Order ID
+  "l": "0.00000000",             // Last executed quantity
+  "z": "0.00000000",             // Cumulative filled quantity
+  "L": "0.00000000",             // Last executed price
+  "n": "0",                      // Commission amount
+  "N": null,                     // Commission asset
+  "T": 1499405658657,            // Transaction time
+  "t": -1,                       // Trade ID
+  "v": 3,                        // Prevented Match Id; This is only visible if the order expired due to STP
+  "I": 8641984,                  // Ignore
+  "w": true,                     // Is the order on the book?
+  "m": false,                    // Is this trade the maker side?
+  "M": false,                    // Ignore
+  "O": 1499405658657,            // Order creation time
+  "Z": "0.00000000",             // Cumulative quote asset transacted quantity
+  "Y": "0.00000000",             // Last quote asset transacted quantity (i.e. lastPrice * lastQty)
+  "Q": "0.00000000",             // Quote Order Quantity
+  "W": 1499405658657,            // Working Time; This is only visible if the order has been placed on the book.
+  "V": "NONE",                   // SelfTradePreventionMode
   "k": {
     "t": 1672515780000, // Kline start time
     "T": 1672515839999, // Kline close time
@@ -38,7 +70,6 @@ const coin = {
     "Q": "0.500",       // Taker buy quote asset volume
     "B": "123456"       // Ignore
   }
-
 }
 
 const statusOptions = [
