@@ -1,8 +1,9 @@
 .container {
-  width: 1000px;
+  width: 100%;
   background: linear-gradient(153deg, rgb(116, 56, 216), rgb(18, 150, 170) 74%);
   padding: 5px;
   color: white;
+  margin: 0 auto;
 }
 
 .main {

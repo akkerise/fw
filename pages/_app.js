@@ -7,9 +7,9 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <NextUIProvider>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
       </NextUIProvider>
     </>
   );
